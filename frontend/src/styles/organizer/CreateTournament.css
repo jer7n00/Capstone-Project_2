@@ -1,0 +1,141 @@
+.create-tournament-container {
+    max-width: 400px; /* Reduced width for a more compact look */
+    margin: auto;
+    padding: 15px; /* Reduced padding for height */
+    background-color: #ffffff; /* A clean white background */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly heavier shadow for depth */
+}
+
+h2 {
+    text-align: center;
+    color: #ffcc00; /* Use a yellow color for the heading */
+    font-size: 1.5em; /* Slightly larger heading */
+    margin-bottom: 15px; /* Reduced margin for spacing */
+    font-family: 'Arial', sans-serif; /* Professional font */
+}
+
+.form-group {
+    margin-bottom: 12px; /* Reduced margin */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px; /* Reduced padding for height */
+    border: 1px solid #ddd; /* Softer border color */
+    border-radius: 4px;
+    font-size: 0.9em; /* Slightly smaller font size */
+    transition: border-color 0.3s; /* Smooth transition on focus */
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #ffcc00; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.add-team-button {
+    margin-top: 8px; /* Slightly reduced margin */
+    padding: 8px 12px;
+    background-color: #ffcc00; /* Yellow for the button */
+    color: #333; /* Dark text for contrast */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Smaller button text */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.add-team-button:hover {
+    background-color: #e6b800; /* Darker yellow on hover */
+}
+
+.team-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0; /* Added margin for spacing */
+}
+
+.team-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd; /* Separate each team visually */
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffcc00; /* Theme color */
+    color: #333; /* Dark text for contrast */
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.submit-button:hover {
+    background-color: #e6b800; /* Darker yellow on hover */
+}
+
+/* Modal styles remain unchanged for consistency */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px; /* Slightly wider modal */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Consistent shadow */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.add-team-submit-button,
+.cancel-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 4px;
+}
+
+.add-team-submit-button {
+    background-color: #28a745; /* Green for add team submit button */
+    color: white;
+}
+
+.cancel-button {
+    background-color: #dc3545; /* Red for cancel button */
+    color: white;
+}
+
+.cancel-button:hover,
+.add-team-submit-button:hover {
+    opacity: 0.9; /* Simple hover effect */
+}

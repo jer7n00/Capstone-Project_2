@@ -1,0 +1,63 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9); /* Transparent white to blend with grass */
+  color: #333; /* Dark text for readability */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+  font-family: Arial, sans-serif;
+  border-bottom: 3px solid #ffcc00; /* Yellow border at the bottom */
+}
+
+.navbar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* Added transform for a modern feel */
+}
+
+.navbar a:hover {
+  color: #006600; /* Dark green for hover to match grass */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.signup-button {
+  background-color: #ffcc00; /* Bright yellow for contrast */
+  color: #333;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Added transform for hover */
+  border: 2px solid transparent; /* Default transparent border */
+}
+
+.signup-button:hover {
+  background-color: #e6b800; /* Slightly darker yellow for hover effect */
+  color: #fff;
+  border: 2px solid #ffcc00; /* Yellow border on hover */
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}

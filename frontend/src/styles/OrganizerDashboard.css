@@ -1,0 +1,45 @@
+/* OrganizerDashboard.css */
+.dashboard {
+    display: flex;
+  }
+  
+  .dashboard-nav {
+    width: 250px;
+    padding: 1rem;
+    background-color: #f5f5f5;
+  }
+  
+  .dashboard-nav h1 {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-content {
+    padding: 1.5rem;
+    width: 100%;
+  }
+/* Back button styling */
+.back-button {
+    display: inline-flex; /* Use flexbox for centering */
+    align-items: center; /* Center the arrow vertically */
+    justify-content: center; /* Center the arrow horizontally */
+    margin: 20px;
+    padding: 10px; /* Equal padding for a more compact button */
+    font-size: 0; /* Hide font size to avoid any unwanted text rendering */
+    width: 20px; /* Set a fixed width for uniformity */
+    height: 20px; /* Set a fixed height for uniformity */
+    color: #f0c14b; /* White color for the arrow */
+    background-color: #fff; /* Light yellow background */
+    border: none; /* No border for a clean look */
+    border-radius: 50%; /* Make the button circular */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Arrow icon styling */
+.back-button::before {
+    content: '←'; /* Simple left arrow */
+    font-size: 24px; /* Adjust the font size of the arrow */
+    line-height: 0; /* Adjust for better centering */
+}
+
+

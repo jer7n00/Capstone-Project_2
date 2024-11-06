@@ -1,0 +1,117 @@
+.matches-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Slightly lighter for a more refined look */
+}
+
+.matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.match-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 20px 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.match-title {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0c040;
+}
+
+.match-details {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.match-details p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #444;
+}
+
+.team-name {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.status {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.status.ongoing {
+    color: #ff9800;
+}
+
+.status.completed {
+    color: #ffffff;
+    background-color: #4caf50; /* Green for completed matches */
+}
+
+.completed-score {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.score-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+}
+
+.score-label {
+    color: #555;
+    font-weight: 600;
+}
+
+.winner {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #2e7d32; /* Distinctive color for winner */
+}
+
+.match-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.view-details-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.view-details-button:hover {
+    background-color: #0056b3;
+}

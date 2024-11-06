@@ -1,0 +1,107 @@
+/* src/components/PlayerProfile.css */
+
+.player-details-container {
+    max-width: 800px; /* Maximum width for better readability */
+    margin: 0 auto; /* Center the container */
+    padding: 30px; /* Adequate padding for spacing */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 12px; /* Rounded corners for a softer look */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+}
+
+.player-details-container:hover {
+    transform: translateY(-6px); /* Slight lift on hover for interactivity */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Stronger shadow on hover */
+}
+
+.player-heading {
+    text-align: center; /* Centered heading */
+    font-size: 2.5rem; /* Large font size for visibility */
+    color: #333; /* Bright yellow for emphasis */
+    margin-bottom: 25px; /* Space below the heading */
+    font-weight: 700; /* Bold font weight */
+}
+
+.player-profile-section {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    gap: 18px; /* Space between items */
+    padding-bottom: 20px; /* Space below the section */
+    margin-top: 20px; /* Space above the section */
+    border-bottom: 1px solid #FFD700; /* Yellow separator */
+}
+
+.profile-image {
+    width: 100px; /* Set to a smaller size for better alignment */
+    height: 100px; /* Keep height equal to width for a perfect circle */
+    border-radius: 50%; /* Circular shape */
+    border: 2px solid #FFD700; /* Yellow border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+    transition: transform 0.2s; /* Smooth transition on hover */
+    object-fit: cover; /* Crop image to fit */
+}
+
+.profile-image:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.player-info {
+    flex-grow: 1; /* Allow this section to grow and fill space */
+    font-size: 1.1rem; /* Readable font size */
+    color: #333; /* Darker text color for readability */
+    background-color: #fffbe6; /* Light yellow background */
+    padding: 20px; /* Adequate padding inside */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+.stats-section {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Space out the stats sections */
+    gap: 15px; /* Space between stat cards */
+    margin-top: 30px; /* Space above the stats section */
+}
+
+.batting-stats, .bowling-stats {
+    background-color: #fff8cc; /* Slightly brighter yellow for contrast */
+    padding: 25px; /* Adequate padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    width: 48%; /* Almost half-width for two cards side by side */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    transition: transform 0.2s, background-color 0.3s; /* Smooth transitions */
+}
+
+.batting-stats:hover, .bowling-stats:hover {
+    transform: translateY(-4px); /* Lift effect on hover */
+    background-color: #fff4b3; /* Lighter yellow on hover */
+}
+
+.batting-stats h3, .bowling-stats h3 {
+    color: #FFB600; /* Deep yellow for headings */
+    font-size: 1.6rem; /* Larger font size for headings */
+    margin-bottom: 15px; /* Space below the headings */
+    font-weight: 600; /* Semi-bold font weight */
+}
+
+.stats-item {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Space between label and value */
+    font-size: 1rem; /* Standard font size */
+    color: #555; /* Darker color for better readability */
+    padding: 5px 0; /* Space above and below each item */
+    border-bottom: 1px solid #FFD700; /* Yellow underline */
+}
+
+.stats-item:last-child {
+    border-bottom: none; /* Remove border from the last item */
+}
+
+.no-stats {
+    text-align: center; /* Center text for no stats */
+    font-size: 1rem; /* Standard font size */
+    color: #b3b3b3; /* Light gray for subtlety */
+    font-style: italic; /* Italics for emphasis */
+    margin-top: 20px; /* Space above */
+    opacity: 0.8; /* Slightly faded text */
+}

@@ -1,0 +1,60 @@
+.create-team-container {
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.create-team-container h2 {
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+}
+
+.create-team-container .form-group {
+    margin-bottom: 20px;
+}
+
+.create-team-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.create-team-container input[type="text"],
+.create-team-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    transition: border-color 0.2s;
+}
+
+.create-team-container input[type="text"]:focus,
+.create-team-container input[type="file"]:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+.create-team-container .submit-button {
+    padding: 12px 20px;
+    background-color: #f0c14b;
+    color: #333;
+    border: 1px solid #a88734;
+    border-radius: 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.create-team-container .submit-button:hover {
+    background-color: #e6b731;
+}
+
+.create-team-container p {
+    color: #28a745;
+    font-weight: bold;
+}

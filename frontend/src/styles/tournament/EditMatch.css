@@ -1,0 +1,37 @@
+/* ViewMatches.css */
+.edit-match-container {
+    padding: 2rem;
+  }
+  
+  .edit-match-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-match-container form div {
+    margin-bottom: 1rem;
+  }
+  
+  .edit-match-container form label {
+    font-weight: bold;
+  }
+  
+  .edit-match-container form input {
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    font-size: 1rem;
+  }
+  
+  .edit-match-container form button {
+    padding: 0.8rem;
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .edit-match-container form button:hover {
+    background-color: #45a049;
+  }
+  

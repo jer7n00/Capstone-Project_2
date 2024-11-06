@@ -1,0 +1,67 @@
+.create-match-container {
+    max-width: 400px; /* Reduced max-width */
+    margin: auto;
+    padding: 10px; /* Reduced padding */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Sharper edges */
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 18px; /* Smaller font size */
+  }
+  
+  .match-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .match-form input,
+  .match-form select {
+    margin-bottom: 10px; /* Reduced margin */
+    padding: 8px; /* Reduced padding */
+    border: 1px solid #ccc;
+    border-radius: 2px; /* Sharper edges */
+    font-size: 14px; /* Smaller font size */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .match-form input:focus,
+  .match-form select:focus {
+    border-color: #f0c040; /* Your accent color */
+    outline: none;
+  }
+  
+  .create-match-button {
+    background-color: #f0c040; /* Your accent color */
+    color: #fff;
+    padding: 8px; /* Reduced padding */
+    border: none;
+    border-radius: 2px; /* Sharper edges */
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding and border in the button's total width and height */
+  }
+  
+  .create-match-button:hover {
+    background-color: #d9b82f; /* Darker shade for hover */
+  }
+  .team-input-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+  }
+  
+  .vs-label {
+    margin: 0 10px; /* Spacing around the label */
+    font-weight: bold; /* Make the 'vs' label bold */
+    color: #333; /* Color to match the theme */
+    font-size: 16px; /* Font size to match the input fields */
+  }
+  
+  

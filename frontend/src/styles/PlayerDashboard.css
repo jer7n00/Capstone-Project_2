@@ -1,0 +1,86 @@
+/* General Dashboard Styles */
+.dashboard {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f6;
+}
+
+.dashboard-nav {
+    width: 220px;
+    background-color: #ffffff;
+    color: #fff;
+    padding: 1rem; /* Reduced padding to minimize space */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Use space-between to distribute space */
+    height: 100%; /* Ensure nav takes full height */
+}
+
+.dashboard-nav h1 {
+    font-size: 1.6rem;
+    color: #ffc107;
+    text-align: center;
+    margin: 0; /* No margin to reduce space */
+    padding: 0.5rem 0; /* Reduced padding for tighter spacing */
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Ensure no margin at the top */
+    flex-grow: 1; /* Allow the list to grow and take remaining space */
+}
+
+.dashboard-nav ul li {
+    margin: 0.5rem 0; /* Compact margin for closer alignment */
+}
+
+.dashboard-nav ul li a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem; /* Padding for clickable area */
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.dashboard-nav ul li a:hover {
+    color: #ffc107;
+    background-color: #ffffff;
+}
+
+/* Logout Link Styles */
+.logout-link {
+    margin-top: auto; /* Ensure the logout link is pushed to the bottom */
+}
+
+.logout-link li {
+    margin-top: auto; /* Optional: Push logout link down if necessary */
+}
+
+.logout-link li a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 6px;
+}
+
+.logout-link li a:hover {
+    color: #ffc107;
+    background-color: #ffffff;
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #f9fbfc;
+}

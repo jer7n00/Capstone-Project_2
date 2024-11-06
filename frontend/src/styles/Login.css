@@ -1,0 +1,129 @@
+/* Login Page Container */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 3rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/cricket-bg3.jpg') no-repeat center center;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* Container for the Login Form */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.75); /* Light overlay for readability */
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  /* Removed border-radius for sharper edges */
+}
+
+/* Header Text */
+.login-header {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Form Styling */
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login label {
+  margin: 0.5rem 0 0.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.login input {
+  padding: 0.7rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 0; /* Removed rounding for sharper edges */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  color: #333;
+}
+
+.login input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Button Styling */
+.login button {
+  padding: 0.8rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0; /* Removed rounding for sharper edges */
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.login button:active {
+  transform: translateY(0);
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Footer Text */
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-footer a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+  }
+}

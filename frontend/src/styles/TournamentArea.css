@@ -1,0 +1,101 @@
+/* src/styles/TournamentArea.css */
+
+.tournament-area-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    background-color: #ffffff; /* White background */
+}
+
+.tournament-heading {
+    font-size: 2.5rem;
+    color: #333; /* Soft yellow */
+    margin-bottom: 35px;
+    margin-top: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tournament-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.tournament-card {
+    background-color: #ffffff; /* Pure white background */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 12px;
+    padding: 10px;
+    width: 250px; /* Reduced width to fit more cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow for smaller card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.tournament-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.tournament-name {
+    font-size: 1.4rem; /* Slightly smaller font size */
+    color: #FFD700; /* Soft yellow */
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.tournament-dates,
+.tournament-location,
+.tournament-organizer,
+.tournament-teams {
+    font-size: 0.95rem; /* Reduced font size for smaller card */
+    color: #333333; /* Dark gray */
+    margin: 6px 0;
+}
+
+.tournament-dates span,
+.tournament-location span,
+.tournament-organizer span,
+.tournament-teams span {
+    font-weight: 500;
+    color: #666666; /* Lighter gray for labels */
+}
+
+.tournament-details-button {
+    background-color: #FFD700; /* Soft yellow */
+    color: #333333; /* Dark gray */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px; /* Reduced padding for smaller button */
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.tournament-details-button:hover {
+    background-color: #FFC107; /* Slightly darker yellow */
+    transform: scale(1.05);
+}
+
+.tournament-details-button:active {
+    transform: scale(0.95);
+}
+
+.tournament-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px; /* Slightly thinner top accent bar */
+    background-color: #FFD700;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
