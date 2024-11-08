@@ -1,16 +1,16 @@
 // src/components/Modal.tsx
 import React from 'react';
-import '../styles/TeamRegistrationModal.css';
+import '../styles/TeamArea.css';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   teamDetails: any; // Adjust type according to your data structure
-  tournamentDetails: any; // Adjust type according to your data structure
+ // Adjust type according to your data structure
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, teamDetails, tournamentDetails }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, teamDetails}) => {
   if (!isOpen) return null;
 
   return (
@@ -20,9 +20,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onConfirm, teamDetails, 
         <h3>Team Details:</h3>
         <p>Team Name: {teamDetails.teamName}</p>
         <p>Team ID: {teamDetails.teamId}</p>
-        <h3>Tournament Details:</h3>
-        <p>Tournament ID: {tournamentDetails.tournamentId}</p>
-        <p>Tournament Name: {tournamentDetails.tournamentName}</p>
+       
+       
         <div className="modal-buttons">
           <button onClick={onClose}>Cancel</button>
           <button onClick={onConfirm}>Register</button>

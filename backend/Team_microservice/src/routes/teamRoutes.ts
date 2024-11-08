@@ -17,11 +17,13 @@ import {
   assignPlayerToTeam,
   updateTeamStats,
   updateSeriesId,
+  getTeamsByTournamentId,
+  getTeamsByUserId,
   
 } from '../controllers/teamController';
 
 const router = Router();
-
+router.get('/teams/:userId/byUserId',getTeamsByUserId);
 // Create a new team
 router.post('/teams', createNewTeam);
 
@@ -50,6 +52,9 @@ router.post('/register-team', registerTeamWithOrganizer);
 router.get('/tournaments', fetchTournamentsFromOrganizer);
 
 router.get('/teams/:teamId', getTeamById);
+
+router.get('/teams/:tournamentId/bytournament', getTeamsByTournamentId);
+
 
 
 // storing in registeredplayer db

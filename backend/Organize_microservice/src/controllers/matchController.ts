@@ -239,7 +239,6 @@ export const createMatch = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-//updating the matchws informaton only not the player information it is present below
 export const updateMatchInfo = async (req: Request, res: Response): Promise<void> => {
   const { matchId, seriesId } = req.params;
   const {
@@ -260,7 +259,6 @@ export const updateMatchInfo = async (req: Request, res: Response): Promise<void
     // Find the match by matchId and seriesId
     console.log(matchId, seriesId);
     const match = await Match.findOne({ matchId: matchId, tournamentId: seriesId });
-  //  console.log(match);
     if (!match) {
       res.status(404).json({ message: 'Match not found' });
       return;
@@ -291,17 +289,30 @@ export const updateMatchInfo = async (req: Request, res: Response): Promise<void
     console.log(`secondTeamWickets: ${match.secondTeamWickets}`);
     console.log(`status: ${match.status}`);
     console.log(`winner: ${winner}`);
-    
-    //update the match stats when winner is announced
-    console.log(winner);
-    console.log(`Comparing winner: ${winner} with firstTeamId: ${match.firstTeamId} and secondTeamId: ${match.secondTeamId}`);
 
-    if (winner && (winner === match.firstTeamId || winner === match.secondTeamId)) {
+    // If winner is 'Tie', update matchesPlayed for both teams
+    if (winner === 'Tie') {
+      console.log("It's a tie, updating matches played for both teams.");
+
+      // Call team microservice to update stats for both teams
+      await axios.put(`${TEAM_MICROSERVICE_URL}/teams/${match.firstTeamId}/update-stats`, {
+        wins:0,
+        matchesPlayed: 1,
+      });
+
+      await axios.put(`${TEAM_MICROSERVICE_URL}/teams/${match.secondTeamId}/update-stats`, {
+        wins:0,
+        matchesPlayed: 1,
+      });
+
+      // Set winner to 'Tie'
+      match.winner = 'Tie';
+    } else if (winner && (winner === match.firstTeamId || winner === match.secondTeamId)) {
       console.log("inside winner if");
       const losingTeamId = winner === match.firstTeamId ? match.secondTeamId : match.firstTeamId;
 
       console.log("Winner detected:", winner);
-      // Call team microservice to update winner stats  http://localhost:5000/api/teams/teamA/update-stats
+      // Call team microservice to update winner stats
       await axios.put(`${TEAM_MICROSERVICE_URL}/teams/${winner}/update-stats`, {
         wins: 1,
         matchesPlayed: 1,
@@ -328,6 +339,7 @@ export const updateMatchInfo = async (req: Request, res: Response): Promise<void
     console.error('Error updating match information:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
+};
 
     // Save the updated match document
   //   await match.save();
@@ -337,7 +349,7 @@ export const updateMatchInfo = async (req: Request, res: Response): Promise<void
   //   console.error('Error updating match information:', error);
   //   res.status(500).json({ message: 'Internal server error' });
   // }
-};
+
 
 
 //updating the match player information (4s,6s etc)

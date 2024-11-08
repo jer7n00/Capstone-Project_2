@@ -1,27 +1,27 @@
 .create-tournament-container {
-    max-width: 400px; /* Reduced width for a more compact look */
+    max-width: 500px; /* Slightly wider form for more room */
     margin: auto;
-    padding: 15px; /* Reduced padding for height */
-    background-color: #ffffff; /* A clean white background */
+    padding: 20px; /* Increased padding for a more spacious look */
+    background-color: #ffffff; /* Clean white background */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly heavier shadow for depth */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
 }
 
 h2 {
     text-align: center;
-    color: #ffcc00; /* Use a yellow color for the heading */
-    font-size: 1.5em; /* Slightly larger heading */
-    margin-bottom: 15px; /* Reduced margin for spacing */
+    color: #ffcc00; /* Yellow for the heading */
+    font-size: 1.6em; /* Larger heading */
+    margin-bottom: 20px; /* Added space beneath the heading */
     font-family: 'Arial', sans-serif; /* Professional font */
 }
 
 .form-group {
-    margin-bottom: 12px; /* Reduced margin */
+    margin-bottom: 15px; /* Increased margin for form spacing */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
     color: #333;
 }
@@ -31,111 +31,184 @@ input[type="date"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 8px; /* Reduced padding for height */
-    border: 1px solid #ddd; /* Softer border color */
-    border-radius: 4px;
-    font-size: 0.9em; /* Slightly smaller font size */
-    transition: border-color 0.3s; /* Smooth transition on focus */
+    padding: 10px; /* Slightly larger padding for easier input */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="number"]:focus,
 textarea:focus {
-    border-color: #ffcc00; /* Highlight border on focus */
-    outline: none; /* Remove default outline */
+    border-color: #ffcc00; /* Highlight on focus */
+    outline: none;
 }
 
 .add-team-button {
-    margin-top: 8px; /* Slightly reduced margin */
-    padding: 8px 12px;
-    background-color: #ffcc00; /* Yellow for the button */
-    color: #333; /* Dark text for contrast */
+    margin-top: 12px;
+    padding: 10px 15px;
+    background-color: #ffcc00;
+    color: #333;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9em; /* Smaller button text */
-    transition: background-color 0.3s; /* Smooth background transition */
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
 .add-team-button:hover {
-    background-color: #e6b800; /* Darker yellow on hover */
+    background-color: #e6b800;
 }
 
 .team-list {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0; /* Added margin for spacing */
+    margin: 15px 0; /* Added margin */
 }
 
 .team-list li {
-    padding: 5px 0;
-    border-bottom: 1px solid #ddd; /* Separate each team visually */
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team-logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    border-radius: 50%;
 }
 
 .submit-button {
     width: 100%;
-    padding: 10px;
-    background-color: #ffcc00; /* Theme color */
-    color: #333; /* Dark text for contrast */
+    padding: 12px;
+    background-color: #ffcc00;
+    color: #333;
     border: none;
-    border-radius: 4px;
-    font-size: 1em;
+    border-radius: 6px;
+    font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #e6b800; /* Darker yellow on hover */
+    background-color: #e6b800;
 }
 
-/* Modal styles remain unchanged for consistency */
+/* Modal Styles */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for more contrast */
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.3s ease-in-out; /* Smooth transition on modal open/close */
 }
 
 .modal {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 350px; /* Slightly wider modal */
+    background-color: #ffffff; /* Ensures the modal itself has a solid background */
+    padding: 40px;
+    border-radius: 12px;
+    width: 500px; /* Wider modal for a more spacious feel */
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Consistent shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    overflow-y: auto;
+    transition: transform 0.3s ease-out; /* Smooth transition effect */
+    transform: translateY(-30px); /* Initial position above screen */
+}
+
+.modal h3 {
+    color: #333;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+}
+
+.available-teams {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.team-option {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.team-option:hover {
+    background-color: #f5f5f5;
+    transform: translateX(5px); /* Slight move effect on hover */
+}
+
+.team-option input {
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
 }
 
 .modal-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    gap: 20px; /* Increased gap for better spacing */
+    margin-top: 20px;
 }
 
 .add-team-submit-button,
 .cancel-button {
-    padding: 8px 12px;
-    font-size: 0.9em;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    font-weight: 500;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    width: 48%; /* Slightly narrower buttons */
+    display: inline-block; /* Ensures the buttons line up properly */
+    text-align: center; /* Ensures text is centered in buttons */
 }
 
 .add-team-submit-button {
-    background-color: #28a745; /* Green for add team submit button */
+    background-color: #4CAF50; /* Green for success */
     color: white;
+}
+
+.add-team-submit-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Slight scale up for hover effect */
 }
 
 .cancel-button {
-    background-color: #dc3545; /* Red for cancel button */
+    background-color: #f44336; /* Red for cancel */
     color: white;
 }
 
-.cancel-button:hover,
-.add-team-submit-button:hover {
-    opacity: 0.9; /* Simple hover effect */
+.cancel-button:hover {
+    background-color: #e53935;
+    transform: scale(1.05); /* Slight scale up for hover effect */
+}
+
+.modal-overlay.fade-in {
+    opacity: 1;
+}
+
+.modal-overlay.fade-out {
+    opacity: 0;
 }

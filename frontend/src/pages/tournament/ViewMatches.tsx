@@ -76,10 +76,10 @@ const ViewMatches: React.FC = () => {
               {match.status === 'completed' && (
                 <div className="completed-score">
                   <div className="score-card">
-                    <span className="score-label">First Team:</span> {match.firstTeamScore}/{match.firstTeamWickets}
+                    <span className="score-label">{match.firstTeamId}</span> {match.firstTeamScore}/{match.firstTeamWickets}
                   </div>
                   <div className="score-card">
-                    <span className="score-label">Second Team:</span> {match.secondTeamScore}/{match.secondTeamWickets}
+                    <span className="score-label">{match.secondTeamId}</span> {match.secondTeamScore}/{match.secondTeamWickets}
                   </div>
                   <p className="winner">Winner: {match.winner || 'TBD'}</p>
                 </div>

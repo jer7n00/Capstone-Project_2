@@ -35,19 +35,6 @@ const Home: React.FC = () => (
         player stats tracking, and tournament organization, we empower teams, players, and organizers to excel.
       </p>
     </section>
-
-    {/* Testimonials Section */}
-    <section className="testimonials-section">
-      <h2>What Our Users Say</h2>
-      <div className="testimonial">
-        <p>"This platform has made organizing our local tournaments so easy. A real game-changer!"</p>
-        <span>- John Doe, Team Captain</span>
-      </div>
-      <div className="testimonial">
-        <p>"I can track my performance stats like never before. It's improved my game significantly."</p>
-        <span>- Jane Smith, Player</span>
-      </div>
-    </section>
   </div>
 );
 

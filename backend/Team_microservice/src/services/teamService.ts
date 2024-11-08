@@ -58,16 +58,3 @@ export const listRegisteredPlayers = async (): Promise<any[]> => {
   return RegisteredPlayer.find(); // Fetch all players without filtering by team ID
 };
 
-// Accept or reject a registered player
-// export const handlePlayerAcceptance = async (playerId: string, teamId: string, action: 'accept' | 'reject') => {
-//   const player = await RegisteredPlayer.findOne({ playerId, teamId });
-//   if (!player) throw new Error('Player not found in registration list');
-
-//   if (action === 'accept') {
-//     await Team.updateOne(
-//       { _id: teamId },
-//       { $push: { players: { playerId: player.playerId, playerName: player.playerName, role: player.role } } }
-//     );
-//   }
-//   await RegisteredPlayer.deleteOne({ playerId, teamId });
-// };

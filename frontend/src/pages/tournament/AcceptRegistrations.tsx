@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import '../../styles/tournament/AcceptRegistrations.css';
 
 interface Team {
   teamId: string;
   teamName: string;
+  seriesId: string;
 }
 
 interface Player {
@@ -36,11 +39,12 @@ interface RegisteredPlayer {
 }
 
 const AcceptRegistrations: React.FC = () => {
+  const { tournamentId } = useParams<{ tournamentId: string }>();
   const [registeredPlayers, setRegisteredPlayers] = useState<RegisteredPlayer[]>([]);
+  const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    // Fetch registered players with their team IDs
     const fetchRegisteredPlayers = async () => {
       try {
         const response = await axios.get(`http://localhost:7000/api/teams/api/teams/db/registered-players`, {
@@ -51,14 +55,12 @@ const AcceptRegistrations: React.FC = () => {
         
         const playersWithDetails = await Promise.all(
           response.data.map(async (registered: RegisteredPlayer) => {
-            // Fetch player details by playerId
             const playerResponse = await axios.get(`http://localhost:7000/api/players/player_id/${registered.playerId}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             });
             
-            // Fetch team details by teamId
             const teamResponse = await axios.get(`http://localhost:7000/api/teams/api/teams/${registered.teamId}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -72,14 +74,19 @@ const AcceptRegistrations: React.FC = () => {
             };
           })
         );
-        setRegisteredPlayers(playersWithDetails);
+
+        const filteredPlayers = playersWithDetails.filter(
+          (registered) => registered.teamDetails?.seriesId === tournamentId
+        );
+
+        setRegisteredPlayers(filteredPlayers);
       } catch (error) {
         console.error('Error fetching registered players:', error);
       }
     };
 
     fetchRegisteredPlayers();
-  }, [token]);
+  }, [token, tournamentId]);
 
   const acceptRegistration = async (playerId: string, teamId: string) => {
     try {
@@ -93,7 +100,6 @@ const AcceptRegistrations: React.FC = () => {
         }
       );
       alert('Player accepted successfully!');
-      // Update state to remove accepted player
       setRegisteredPlayers((prevPlayers) => prevPlayers.filter((player) => player.playerId !== playerId));
     } catch (error) {
       console.error('Error accepting player registration:', error);
@@ -108,30 +114,76 @@ const AcceptRegistrations: React.FC = () => {
         },
       });
       alert('Player rejected successfully!');
-      // Update state to remove rejected player
       setRegisteredPlayers((prevPlayers) => prevPlayers.filter((player) => player.playerId !== playerId));
     } catch (error) {
       console.error('Error rejecting player registration:', error);
     }
   };
 
+  const handleViewDetails = (player: Player) => {
+    setSelectedPlayer(player);
+  };
+
+  const closeModal = () => {
+    setSelectedPlayer(null);
+  };
+
   return (
-    <div>
-      <h2>Accept Registrations</h2>
-      <ul>
-        {registeredPlayers.map((registeredPlayer) => (
-          <li key={registeredPlayer.playerId}>
-            <p>
-              Player: {registeredPlayer.playerDetails?.name} | Age: {registeredPlayer.playerDetails?.age} | Role: {registeredPlayer.playerDetails?.role}
-            </p>
-            <p>
-              Team: {registeredPlayer.teamDetails?.teamName || 'Unknown Team'}
-            </p>
-            <button onClick={() => acceptRegistration(registeredPlayer.playerId, registeredPlayer.teamId)}>Accept</button>
-            <button onClick={() => rejectRegistration(registeredPlayer.playerId)}>Reject</button>
-          </li>
-        ))}
-      </ul>
+    <div className="accept-registration-table">
+      <h2>Registrations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Age</th>
+            <th>Role</th>
+            <th>Team</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {registeredPlayers.map((registeredPlayer) => (
+            <tr key={registeredPlayer.playerId}>
+              <td>{registeredPlayer.playerDetails?.name}</td>
+              <td>{registeredPlayer.playerDetails?.age}</td>
+              <td>{registeredPlayer.playerDetails?.role}</td>
+              <td>{registeredPlayer.teamDetails?.teamName || 'Unknown Team'}</td>
+              <td>
+                <button onClick={() => acceptRegistration(registeredPlayer.playerId, registeredPlayer.teamId)}>Accept</button>
+                <button onClick={() => rejectRegistration(registeredPlayer.playerId)}>Reject</button>
+                <button onClick={() => handleViewDetails(registeredPlayer.playerDetails!)}>View Details</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {selectedPlayer && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>&times;</span>
+            <h3>{selectedPlayer.name}'s Details</h3>
+            <p><strong>Age:</strong> {selectedPlayer.age}</p>
+            <p><strong>Role:</strong> {selectedPlayer.role}</p>
+            {selectedPlayer.battingStats && (
+              <>
+                <h4>Batting Stats</h4>
+                <p><strong>Runs:</strong> {selectedPlayer.battingStats.runs}</p>
+                <p><strong>Matches Played:</strong> {selectedPlayer.battingStats.matchesPlayed}</p>
+                <p><strong>Strike Rate:</strong> {selectedPlayer.battingStats.strikeRate}</p>
+              </>
+            )}
+            {selectedPlayer.bowlingStats && (
+              <>
+                <h4>Bowling Stats</h4>
+                <p><strong>Wickets:</strong> {selectedPlayer.bowlingStats.wickets}</p>
+                <p><strong>Matches Played:</strong> {selectedPlayer.bowlingStats.matchesPlayed}</p>
+                <p><strong>Catches:</strong> {selectedPlayer.bowlingStats.catches}</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

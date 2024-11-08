@@ -19,10 +19,6 @@ const RoleSelection: React.FC = () => {
           <h2>Player</h2>
           <p>Track your performance and improve your game.</p>
         </div>
-        <div className="role-card" onClick={() => handleRoleSelect('Team Manager')}>
-          <h2>Team Manager</h2>
-          <p>Manage your team and strategize for success.</p>
-        </div>
         <div className="role-card" onClick={() => handleRoleSelect('Organizer')}>
           <h2>Organizer</h2>
           <p>Organize tournaments and manage events seamlessly.</p>

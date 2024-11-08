@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import '../../styles/organizer/CreateTeam.css';
 
@@ -12,6 +12,8 @@ const CreateTeam: React.FC = () => {
   const [logoFile, setLogoFile] = useState<File | null>(null); // File state for the logo
   const [message, setMessage] = useState('');
   const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('user_id'); // Retrieve user_id from local storage
+  const fileInputRef = useRef<HTMLInputElement | null>(null); // Ref for file input
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,8 +57,9 @@ const CreateTeam: React.FC = () => {
 
     try {
       const logoUrl = await uploadLogoToCloudinary();
-      const finalTeamData = { ...teamData, teamLogoUrl: logoUrl };
+      const finalTeamData = { ...teamData, teamLogoUrl: logoUrl, userId }; // Add userId to the team data
       console.log(finalTeamData);
+
       const response = await axios.post('http://localhost:7000/api/teams/api/teams', finalTeamData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,6 +70,11 @@ const CreateTeam: React.FC = () => {
       setMessage('Team created successfully!');
       setTeamData({ teamId: '', teamName: '', teamLogoUrl: '' });
       setLogoFile(null);
+
+      // Clear the file input by setting its value to an empty string
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     } catch (error) {
       console.error('Error creating team:', error);
       setMessage('Failed to create team. Please try again.');
@@ -107,6 +115,7 @@ const CreateTeam: React.FC = () => {
             name="teamLogo"
             accept="image/*"
             onChange={handleFileChange}
+            ref={fileInputRef} // Attach the ref to the file input
           />
         </div>
 

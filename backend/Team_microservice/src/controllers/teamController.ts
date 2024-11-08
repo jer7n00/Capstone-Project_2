@@ -25,19 +25,6 @@ export const createNewTeam = async (req: Request, res: Response): Promise<void> 
   }
 };
 
-//fetching the team details by team_id from the database
-// export const fetchTeamDetails = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     const team = await getTeamById(req.params.teamId);
-//     if (team) {
-//       res.status(200).json(team);
-//     } else {
-//       res.status(404).json({ message: 'Team not found' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error fetching team details', error });
-//   }
-// };
 
 
 //send the team details to tournament microservice
@@ -59,32 +46,7 @@ export const registerTeamWithOrganizer = async (req: Request, res: Response): Pr
       message: 'Error registering team with organizer',
       error: error.response?.data || error.message,
     });
-  }
-};
-
-
-//sending the team details to the tournament microservice when click the button in tournament (navigation )
-// export const sendTeamDetailsToOrganizer = async (req: Request, res: Response): Promise<void> => {
-//   try {
-//     const { teamId } = req.params; // Get the team ID from request parameters
-
-//     // Fetch the team details
-//     const team = await getTeamById(teamId);
-//     if (!team) {
-//       res.status(404).json({ message: 'Team not found' });
-//       return; // Explicitly return to avoid continuing execution
-//     }
-
-//     // Send the team details to the Organizer microservice
-//     await sendTeamToOrganizer(team);
-
-//     // Send success response
-//     res.status(200).json({ message: 'Team details sent to Organizer' });
-//   } catch (error) {
-//     // Send error response in case of failure
-//     res.status(500).json({ message: 'Error sending team details to Organizer', error });
-//   }
-// };
+  }};
 
 export const fetchTeamStatistics = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -115,18 +77,7 @@ export const getRegisteredPlayers = async (req: Request, res: Response): Promise
   }
 };
 
-//like button accept or reject in front dependices on front end [returned meesage(String)]
-// export const processPlayerRequest = async (req: Request, res: Response): Promise<void> => {
-//   const { playerId, teamId } = req.body;
-//   const action = req.params.action as 'accept' | 'reject';
 
-//   try {
-//     await handlePlayerAcceptance(playerId, teamId, action);
-//     res.status(200).json({ message: `Player ${action}ed successfully` });
-//   } catch (error) {
-//     res.status(500).json({ message: `Error processing player ${action}`, error });
-//   }
-// };
 
 
 // Fetch all tournaments from the organizer microservice
@@ -337,4 +288,42 @@ export const updateSeriesId = async (req: Request, res: Response): Promise<void>
   }
 };
 
+export const getTeamsByTournamentId = async (req: Request, res: Response): Promise<void> => {
+  const { tournamentId } = req.params;
 
+  try {
+    // Find all teams with the matching seriesId (tournamentId)
+    const teams = await Team.find({ seriesId: tournamentId });
+
+    if (teams.length === 0) {
+      res.status(200).json({ message: 'No teams found for this tournament' });
+      return;
+    }
+
+    // Send the teams data as the response
+    res.status(200).json(teams);
+  } catch (error) {
+    console.error('Error fetching teams by tournament ID:', error);
+    res.status(500).json({ message: 'Internal server error', error: (error as Error).message });
+  }
+};
+
+// controllers/teamController.ts
+export const getTeamsByUserId = async (req: Request, res: Response): Promise<void> => {
+  const { userId } = req.params;
+
+  try {
+    // Assuming you have a field `userId` in your Team model that associates teams with users
+    const teams = await Team.find({ userId }); // Adjust if your team model uses a different field for user association
+    
+    if (teams.length === 0) {
+      res.status(200).json({ message: 'No teams found for this user' }); // Send message without 404
+      return;
+    }
+
+    res.status(200).json(teams);
+  } catch (error) {
+    console.error('Error fetching teams by userId:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};

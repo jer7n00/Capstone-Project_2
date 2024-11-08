@@ -8,6 +8,8 @@ import '../../styles/TeamArea.css';
 interface Team {
   teamId: string;
   teamName: string;
+  teamLogoUrl: string;
+  players: string[]; // Array to hold player IDs
 }
 
 interface Tournament {
@@ -24,6 +26,7 @@ const TeamArea: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [tournamentDetails, setTournamentDetails] = useState<Tournament | null>(null);
   const [playerId, setPlayerId] = useState<string | null>(null); // To store player ID
+  const [isJoining, setIsJoining] = useState<boolean>(false); // Loading state for "Join Team"
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -57,7 +60,7 @@ const TeamArea: React.FC = () => {
     };
 
     const fetchPlayerId = async () => {
-      const user_id = localStorage.getItem('user_id'); // Fetch the user_id from local storage
+      const user_id = localStorage.getItem('user_id');
       if (user_id) {
         try {
           console.log(user_id);
@@ -68,7 +71,7 @@ const TeamArea: React.FC = () => {
             },
           });
           console.log(response.data.player_id);
-          setPlayerId(response.data.player_id); // Assuming the response contains playerId
+          setPlayerId(response.data.player_id);
         } catch (err) {
           setError('Failed to fetch player ID');
         }
@@ -77,7 +80,7 @@ const TeamArea: React.FC = () => {
 
     fetchTeams();
     fetchTournamentDetails();
-    fetchPlayerId(); // Fetch player ID after fetching teams and tournament details
+    fetchPlayerId();
   }, [tournamentId]);
 
   const handleJoinTeam = (team: Team) => {
@@ -86,14 +89,12 @@ const TeamArea: React.FC = () => {
   };
 
   const handleConfirmRegistration = async () => {
-    //console.log('hello');
-    //console.log(selectedTeam);
-    if (!selectedTeam || !playerId) {console.log('failed'); return;}
-
+    if (!selectedTeam || !playerId) return;
+    setIsJoining(true);
     try {
       const token = localStorage.getItem('token');
       await axios.post('http://localhost:7000/api/teams/api/teams/register-player', {
-        playerId: playerId, // Include player ID
+        playerId: playerId,
         teamId: selectedTeam.teamId,
       }, {
         headers: {
@@ -101,11 +102,21 @@ const TeamArea: React.FC = () => {
         },
       });
 
-      alert('Successfully registered for the team!'); // Feedback to the user
+      alert('Successfully registered for the team!');
       setModalOpen(false);
+      // Update the team players count after registration
+      setTeams((prevTeams) =>
+        prevTeams.map((team) =>
+          team.teamId === selectedTeam.teamId
+            ? { ...team, players: [...team.players, playerId] }
+            : team
+        )
+      );
     } catch (err) {
       console.error(err);
       alert('Failed to register for the team.');
+    } finally {
+      setIsJoining(false);
     }
   };
 
@@ -116,16 +127,28 @@ const TeamArea: React.FC = () => {
     <div className="team-area-container">
       <h2 className="team-heading">Teams in Tournament</h2>
       <div className="team-cards-container">
-        {teams.map((team) => (
-          <div key={team.teamId} className="team-card">
-            <img src="https://via.placeholder.com/80" alt="Team Logo" className="team-logo" />
-            <div className="team-info">
-              <h3 className="team-name">{team.teamName}</h3>
-              <p className="team-id">ID: {team.teamId}</p>
-              <button className="join-team-button" onClick={() => handleJoinTeam(team)}>Join Team</button>
+        {teams.map((team) => {
+          const playerCount = team.players.length;
+          const isFull = playerCount >= 15;
+
+          return (
+            <div key={team.teamId} className="team-card">
+              <img src={team.teamLogoUrl || "https://via.placeholder.com/80"} alt="Team Logo" className="team-logo" />
+              <div className="team-info">
+                <h3 className="team-name">{team.teamName}</h3>
+                <p className="team-id">ID: {team.teamId}</p>
+                <p className="team-players">Players: {playerCount}/15</p>
+                <button 
+                  className="join-team-button" 
+                  onClick={() => handleJoinTeam(team)} 
+                  disabled={isJoining || isFull}
+                >
+                  {isJoining && selectedTeam?.teamId === team.teamId ? "Joining..." : isFull ? "Team Full" : "Join Team"}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Modal for registration confirmation */}
@@ -134,7 +157,6 @@ const TeamArea: React.FC = () => {
         onClose={() => setModalOpen(false)} 
         onConfirm={handleConfirmRegistration} 
         teamDetails={selectedTeam} 
-        tournamentDetails={tournamentDetails} 
       />
     </div>
   );

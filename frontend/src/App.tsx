@@ -12,6 +12,8 @@ import PlayerDetails from './pages/player/PlayerDetails';
 import OrganizerDashboard from './pages/organizer/OrganizerDashboard';
 import TournamentDashboard from './pages/tournament/TournamentDashboard';
 import EditMatch from './pages/tournament/EditMatch';
+import About from './pages/About'; // Import About page
+import Features from './pages/Features';
 
 const App: React.FC = () => (
   <AuthProvider>
@@ -28,6 +30,8 @@ const App: React.FC = () => (
         <Route path="/tournament-dashboard/:tournamentId/*" element={<TournamentDashboard />} /> {/* Separate route */}
         {/* <Route path = "/palyer-details" element = {<PlayerDetails/>}/> */}
         <Route path="/edit-match/:matchId/:tournamentId" element={<EditMatch />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/features" element={<Features />} />
       </Routes>
     </Router>
   </AuthProvider>

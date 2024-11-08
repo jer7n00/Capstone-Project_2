@@ -26,6 +26,7 @@ export interface TeamDocument extends Document {
   losses: number;
   players: string[]; // Now storing only Player IDs as strings
   teamLogoUrl:string;
+  userId:string;
 }
 
 // Team model definition
@@ -37,7 +38,8 @@ const TeamSchema: Schema = new Schema({
   wins: { type: Number, default: 0 },
   losses: { type: Number, default: 0 },
   players: [{ type: String }], // Only store player IDs as strings
-  teamLogoUrl: {type:String}
+  teamLogoUrl: {type:String},
+  userId:{type:String}
 });
 
 // Set `teamId` as the primary key by disabling `_id`

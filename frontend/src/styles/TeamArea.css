@@ -74,3 +74,92 @@
 .join-team-button:hover {
     background-color: #FFC107;
 }
+
+/* src/styles/TeamArea.css */
+
+/* Existing styles omitted for brevity */
+
+/* src/styles/TeamRegistrationModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-content h3 {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-buttons button:hover {
+    background-color: #FFC107;
+}
+
+.modal-buttons button:first-child {
+    background-color: #ddd;
+    color: #333;
+}
+
+.modal-buttons button:first-child:hover {
+    background-color: #bbb;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

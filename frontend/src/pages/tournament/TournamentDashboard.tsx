@@ -4,6 +4,7 @@ import { useAuth } from '../../components/AuthContext';
 import ViewMatches from './ViewMatches';
 import CreateMatch from './CreateMatch';
 import AcceptRegistrations from './AcceptRegistrations';
+import ViewTeams from './ViewTeams';
 import '../../styles/OrganizerDashboard.css';
 
 const TournamentDashboard: React.FC = () => {
@@ -17,7 +18,8 @@ const TournamentDashboard: React.FC = () => {
         <ul>
           <li><Link to={`/tournament-dashboard/${tournamentId}`}>View Matches</Link></li>
           <li><Link to={`/tournament-dashboard/${tournamentId}/create-match`}>Create Match</Link></li>
-          <li><Link to={`/tournament-dashboard/${tournamentId}/accept-registrations`}>Accept Registrations</Link></li>
+          <li><Link to={`/tournament-dashboard/${tournamentId}/accept-registrations`}>Registrations</Link></li>
+          <li><Link to={`/tournament-dashboard/${tournamentId}/teams`}>Teams</Link></li>
         </ul>
         <ul className="logout-link">
           <li><Link to="/" onClick={logout}>Logout</Link></li>
@@ -30,6 +32,7 @@ const TournamentDashboard: React.FC = () => {
           <Route path="" element={<ViewMatches />} />
           <Route path="create-match" element={<CreateMatch />} />
           <Route path="accept-registrations" element={<AcceptRegistrations />} />
+          <Route path="teams" element={<ViewTeams />} />
         </Routes>
       </main>
     </div>

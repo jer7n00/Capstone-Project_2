@@ -1,0 +1,30 @@
+/* ViewTeams.css */
+.view-teams {
+    padding: 20px;
+  }
+  
+  .view-teams h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .view-teams table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .view-teams th, .view-teams td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .view-teams th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .view-teams img {
+    border-radius: 5px;
+  }
+  
