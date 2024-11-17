@@ -33,7 +33,7 @@ const Login: React.FC = () => {
         localStorage.setItem('username', user.username || '');
         localStorage.setItem('user_id', user.u_id || '');
         localStorage.setItem('email', user.email || '');
-        
+
         login();
 
         // Check the role and profile completion
@@ -72,21 +72,17 @@ const Login: React.FC = () => {
         <p className="login-subtitle">Access your account to manage teams, track player stats, and more!</p>
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
           <input
             type="email"
-            id="email"
-            placeholder="Enter your email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
 
-          <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
-            placeholder="Enter your password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

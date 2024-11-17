@@ -14,6 +14,7 @@ import TournamentDashboard from './pages/tournament/TournamentDashboard';
 import EditMatch from './pages/tournament/EditMatch';
 import About from './pages/About'; // Import About page
 import Features from './pages/Features';
+import MatchScoreboard from './pages/tournament/MatchScorecard';
 
 const App: React.FC = () => (
   <AuthProvider>
@@ -32,6 +33,7 @@ const App: React.FC = () => (
         <Route path="/edit-match/:matchId/:tournamentId" element={<EditMatch />} />
         <Route path="/about" element={<About />} />
         <Route path="/features" element={<Features />} />
+        <Route path="/edit-matchscorecard/:matchId/:tournamentId" element={<MatchScoreboard />} />
       </Routes>
     </Router>
   </AuthProvider>

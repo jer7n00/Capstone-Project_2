@@ -1,0 +1,45 @@
+.match-scoreboard {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .team-scoreboard {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .player-stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 0 5px;
+    text-align: center;
+  }
+  
+  .save-button {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+  }
+  
